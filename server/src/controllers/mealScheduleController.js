@@ -41,6 +41,7 @@ const createMealScheduleForUser = asyncHandler(async (req, res) => {
 
   // Look up the profile of the user
   const userProfile = await UserProfile.findOne({ userInfoID: id });
+
   // Generate the schedule with OpenAI
   const userData = userUtil.generateUserObject(userProfile);
   const generatedSchedule = await openAI.generateMealSchedule(userData);
